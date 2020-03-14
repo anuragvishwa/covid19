@@ -22,7 +22,6 @@ export default class BasicFixedColumns extends React.Component {
       let i = 0;
       let firstcol, secondcol;
       for (const key of keys) {
-        // console.log(key);
         if (i == 0) {
           firstcol = { title: key, field: "col1", width: 120 };
         } else if (i == 1) {
@@ -41,11 +40,9 @@ export default class BasicFixedColumns extends React.Component {
           };
           columns.push(secondcol);
           columns.push(firstcol);
-          console.log(firstcol, secondcol);
         } else {
           const col = { title: key, field: "col" + i, width: 120 };
           columns.push(col);
-          console.log(col);
         }
         i++;
       }
@@ -70,6 +67,14 @@ export default class BasicFixedColumns extends React.Component {
           columns["col0"] = secondVal;
           columns["col1"] = firstVal;
         } else {
+          if (j != 2 && j != 3) {
+            // var sum = 0;
+            // var newarray = values[j].map(myFunction);
+            // function myFunction(num) {
+            //   return sum + num;
+            // }
+            // console.log(sum);
+          }
           columns["col" + j] = val;
         }
         j++;
