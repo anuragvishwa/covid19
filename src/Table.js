@@ -24,17 +24,30 @@ export default class BasicFixedColumns extends React.Component {
       for (const key of keys) {
         // console.log(key);
         if (i == 0) {
-          firstcol = { title: key, field: "col" + i++, width: 150 };
-          continue;
-        }
-        if (i == 1) {
-          secondcol = { title: key, field: "col" + i++, width: 150 };
+          firstcol = { title: key, field: "col1", width: 120 };
+        } else if (i == 1) {
+          secondcol = {
+            title: key,
+            field: "col0",
+            cellStyle: {
+              backgroundColor: "#039be5",
+              color: "#FFF"
+            },
+            headerStyle: {
+              color: "#FFFFFF",
+              backgroundColor: "#000000"
+            },
+            width: 120
+          };
           columns.push(secondcol);
           columns.push(firstcol);
-          continue;
+          console.log(firstcol, secondcol);
+        } else {
+          const col = { title: key, field: "col" + i, width: 120 };
+          columns.push(col);
+          console.log(col);
         }
-        const col = { title: key, field: "col" + i++, width: 150 };
-        columns.push(col);
+        i++;
       }
     }
     return columns;
@@ -42,40 +55,30 @@ export default class BasicFixedColumns extends React.Component {
 
   getTableData(data) {
     const rows = [];
-    const columns = [];
 
     for (let myval of data) {
       const values = Object.values(myval);
-      //console.log(values);
-      let i = 0;
+      let columns = {};
+
       let j = 0;
-      let firstcol, secondcol;
+      let firstVal, secondVal;
       for (let val of values) {
-        // console.log("Are you inside?");
         if (j == 0) {
-          let firstcol = {};
-          firstcol["col" + i++] = val;
-          // firstcol = { "col"+i++: val, field: "row" + i++ + j++, width: 150 };
-          continue;
-        }
-        if (j == 1) {
-          let secondcol = {};
-          secondcol["col" + i++] = val;
-          columns.push(secondcol);
-          columns.push(firstcol);
-          continue;
+          firstVal = val;
+        } else if (j == 1) {
+          secondVal = val;
+          columns["col0"] = secondVal;
+          columns["col1"] = firstVal;
+        } else {
+          columns["col" + j] = val;
         }
         j++;
-        console.log(firstcol, secondcol);
-
-        let col = {};
-        col["col" + i++] = val;
-        console.log("anurag");
-        columns.push(col);
       }
+
+      rows.push(columns);
     }
 
-    return columns;
+    return rows;
   }
 
   componentDidMount() {
@@ -99,6 +102,14 @@ export default class BasicFixedColumns extends React.Component {
         options={{
           fixedColumns: {
             left: 1
+          },
+          sorting: true,
+          rowStyle: {
+            backgroundColor: "#ddd"
+          },
+          headerStyle: {
+            backgroundColor: "#039be5",
+            color: "#FFF"
           }
         }}
       />
