@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "CoronaTrace",
+  "name": "CoronaTrace",
+  "description": "Coronavirus,covid19,corona,#covid19,#corona,#coronavirus,#coronavirusupdate,coronavirusupdate,corona19,#Covid19india,Covid19india,coronatrack,coronavirustrack,coronavirusmonitor,covidtrack",
   "icons": [
     {
       "src": "favicon.ico",
