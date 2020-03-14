@@ -101,7 +101,7 @@ export default class BasicFixedColumns extends React.Component {
     const dataRows = this.getTableData(this.state.data);
     return (
       <MaterialTable
-        title="Countries Affected"
+        title="Countries"
         columns={columns}
         data={dataRows}
         options={{
