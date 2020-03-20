@@ -1,14 +1,14 @@
 import React from "react";
-import logo from "./logo.svg";
+
 import "./App.css";
 
 import BasicFixedColumns from "./Table";
-import TwitterHastag from "./Twitter";
+import Cases from "./Cases";
 
 function App() {
   return (
     <div className="App">
-      <BasicFixedColumns></BasicFixedColumns>
+      <Cases></Cases>
     </div>
   );
 }
